@@ -1,0 +1,175 @@
+﻿@{
+    ViewBag.Title = "Profile";
+}
+
+<div class="page-header">
+    <h1>Your profile</h1>
+</div>
+<form id="profile-form">
+    <input id="wallet" hidden name="wallet" />
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+    </div>
+    <div class="form-group">
+        <label for="avatar">Avatar</label>
+        <div class="custom-file">
+            <input type="file" class="custom-file-input" accept="image/*" id="avatar" name="avatar">
+            <label class="custom-file-label" for="avatar">Choose file</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="name">Nickname <span class="text-muted">(used for short donate link, like <i>nasdonate.com/to/nickname</i>)</span></label>
+        <input type="text" class="form-control" id="alias" name="alias" placeholder="Enter your nickname" required minlength="4">
+        <div class="invalid-feedback">
+            Nickname is already taken.
+        </div>
+    </div>
+    <label>Sites</label>
+    <div class="row">
+        <div class="col">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <img class="form-contact-icon" src="~/img/contacts/twitter.svg">
+                    </span>
+                </div>
+                <input type="text" class="form-control" placeholder="Twitter nickname" id="twitter">
+            </div>
+        </div>
+        <div class="col">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <img class="form-contact-icon" src="~/img/contacts/twitch.svg">
+                    </span>
+                </div>
+                <input type="text" class="form-control" placeholder="Twitch nickname" id="twitch">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <img class="form-contact-icon" src="~/img/contacts/facebook.svg">
+                    </span>
+                </div>
+                <input type="text" class="form-control" placeholder="facebook nickname" id="facebook">
+            </div>
+        </div>
+        <div class="col">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <img class="form-contact-icon" src="~/img/contacts/youtube.svg">
+                    </span>
+                </div>
+                <input type="text" class="form-control" placeholder="Youtube chanel" id="youtube">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <img class="form-contact-icon" src="~/img/contacts/instagram.svg">
+                    </span>
+                </div>
+                <input type="text" class="form-control" placeholder="Instagram nickname" id="instagram">
+            </div>
+        </div>
+
+        <div class="col"></div>
+    </div>
+
+    <button type="submit" class="btn btn-secondary mt-3" id="save-profile">Save profile</button>
+</form>
+<script>
+    window.postMessage({
+        "target": "contentscript",
+        "data":{
+        },
+        "method": "getAccount",
+    }, "*");
+
+    window.addEventListener('message',
+        function(e) {
+            if (!!e.data.data.account) {
+                document.getElementById("wallet").value = e.data.data.account;
+            }
+        });
+
+</script>
+@section Scripts
+{
+    api.getProfileByWallet("", resp => {
+        if(resp.result && !resp.result.startsWith("Error")){
+            let profile = JSON.parse(resp.result);
+            $("#name").val(profile.name);
+            $("#alias").val(profile.alias);
+            $("#twitter").val(profile.twitter);
+            $("#twitch").val(profile.twitch);
+            $("#facebook").val(profile.facebook);
+            $("#instagram").val(profile.instagram);
+            $("#youtube").val(profile.youtube);
+        }
+    });
+    $('#alias').change(function(event) {
+        let alias = $('#alias').val();
+    $.get(location.protocol + "//" + location.host + "/profile/isAliasTaken?alias=" + alias + "&wallet=" + $("#wallet").val(), function(data) { 
+        if(data) {
+            $('#alias').removeClass('is-valid');
+            $('#alias').addClass('is-invalid');
+            $('#save-profile').prop('disabled', true);
+        }
+        else {
+            $('#alias').removeClass('is-invalid');
+            $('#alias').addClass('is-valid');
+            $('#save-profile').prop('disabled', false);
+        }
+        });
+    });
+
+    $('.custom-file-input').on('change', function () {
+            let fileName = $(this).val().split('\\').pop();
+            $(this).next('.custom-file-label').addClass("selected").html(fileName);
+        });
+
+        $("#profile-form").submit(function(e){
+            e.preventDefault();
+
+        let formdata = new FormData(this);
+        let profile = {            
+            date : Date.now(),
+            name : $("#name").val(),
+            alias : $("#alias").val(),
+            twitter : $("#twitter").val(),
+            twitch : $("#twitch").val(),
+            facebook : $("#facebook").val(),
+            instagram : $("#instagram").val(),
+            youtube : $("#youtube").val()            
+        };
+
+        $.ajax({
+            url: "/profile/save",
+            type: "POST",
+            data: formdata,
+            mimeTypes:"multipart/form-data",
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(resp){                       
+                api.saveProfile(profile, resp => {
+
+                });
+            },
+            error: function(resp){
+                alert(resp.responseText);
+                console.log(resp);
+            }
+        });
+    });
+}

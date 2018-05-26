@@ -1,0 +1,11 @@
+F:\Projects\NasDonate\NasDonate\bin\Release\netcoreapp2.0\NasDonate.deps.json
+F:\Projects\NasDonate\NasDonate\bin\Release\netcoreapp2.0\NasDonate.runtimeconfig.json
+F:\Projects\NasDonate\NasDonate\bin\Release\netcoreapp2.0\NasDonate.runtimeconfig.dev.json
+F:\Projects\NasDonate\NasDonate\bin\Release\netcoreapp2.0\NasDonate.dll
+F:\Projects\NasDonate\NasDonate\bin\Release\netcoreapp2.0\NasDonate.pdb
+F:\Projects\NasDonate\NasDonate\obj\Release\netcoreapp2.0\NasDonate.csprojResolveAssemblyReference.cache
+F:\Projects\NasDonate\NasDonate\obj\Release\netcoreapp2.0\NasDonate.csproj.CoreCompileInputs.cache
+F:\Projects\NasDonate\NasDonate\obj\Release\netcoreapp2.0\NasDonate.AssemblyInfoInputs.cache
+F:\Projects\NasDonate\NasDonate\obj\Release\netcoreapp2.0\NasDonate.AssemblyInfo.cs
+F:\Projects\NasDonate\NasDonate\obj\Release\netcoreapp2.0\NasDonate.dll
+F:\Projects\NasDonate\NasDonate\obj\Release\netcoreapp2.0\NasDonate.pdb

@@ -1,0 +1,133 @@
+﻿@{
+    ViewBag.Title = "Profiles";
+}
+
+<div class="page-header">
+    <h1>Profiles</h1>
+</div>
+<div class="profiles-deck d-flex justify-content-center flex-wrap">
+    @*<div class="d-flex flex-column align-items-center profile">
+        <div class="profile-header">
+            <h3>Bojack Horseman</h3>
+        </div>
+        <div class="profile-body">
+            <img class="profile-avatar" src="~/img/bojack.jpg">
+            <div class="text-center profile-contacts">
+                <a href="" class="contact-link" title="Twitch" data-toggle="tooltip" data-placement="bottom">
+                    <img src="~/img/contacts/twitch.svg">
+                </a>
+                <a href="" class="contact-link" title="Youtube" data-toggle="tooltip" data-placement="bottom">
+                    <img src="~/img/contacts/youtube.svg">
+                </a>
+                <a href="" class="contact-link" title="Facebook" data-toggle="tooltip" data-placement="bottom">
+                    <img src="~/img/contacts/facebook.svg">
+                </a>
+                <a href="" class="contact-link" title="Instagram" data-toggle="tooltip" data-placement="bottom">
+                    <img src="~/img/contacts/instagram.svg">
+                </a>
+                <a href="" class="contact-link" title="Twitter" data-toggle="tooltip" data-placement="bottom">
+                    <img src="~/img/contacts/twitter.svg">
+                </a>
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary btn-donate" data-toggle="modal" data-target="#donateModal">Donate</button>
+    </div>*@
+</div>
+
+<!-- Donate modal window-->
+<div id="donateModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Donate to <span class="nickname">Bojack Horseman</span></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="donateForm">
+                    <div class="form-group">
+                        <label for="name">Your name</label>
+                        <input type="text" class="form-control" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <input type="text" class="form-control" id="message">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Donate amount</label>
+                        <input type="text" class="form-control" id="amount" placeholder="5 NAS" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id="makeDonate" type="submit" class="btn btn-primary" form="donateForm">Donate</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    let alias = $("#searchInput").val();
+    let wallet = alias; //TODO: get wallet by alias
+    $(".profiles-deck").empty();
+    showLoader();
+
+    $('#donateModal').on('show.bs.modal', function (event) {
+        let profileId = $(event.relatedTarget).data('profile-id'); 
+        $('#makeDonate').data('profile-id', profileId);
+        let name = $(event.relatedTarget).data('profile-name');
+        $(this).find('.nickname').text(name);
+    });
+
+    $('#donateForm').submit(function(event) {
+        event.preventDefault();
+
+        let profileId = $('#makeDonate').data('profile-id');
+        let amount = $('#amount').val(); 
+        let author = $('#name').val();
+        let message = $('#message').val();
+
+        $('#donateModal').modal('hide');
+        api.donate(profileId, amount, author, message, resp => {
+            console.log(resp);
+        });
+    });
+
+    if(wallet) {
+        api.getProfileByWallet(wallet, resp => {
+            hideLoader();
+            if(resp.result && !resp.result.startsWith('Error')) {
+                let profile = JSON.parse(resp.result);
+                setAvatarUrl(profile, () =>  {
+                        addProfileCard(profile)
+                        $('.profile').find('.btn-donate').click();
+                ;});
+            }
+            else {                
+                $(".profiles-deck").append(`<div class="no-profile">Profile "${alias}" not found</div>`);                
+            }
+        });
+    }
+    else {
+        api.getProfiles(100, 0, resp => {
+            hideLoader();            
+            if(resp.result && resp.result != "[]") {                
+                let profiles = JSON.parse(resp.result);
+                profiles.sort((a, b) => a.date > b.date ? -1 : 1);
+                for(let profile of profiles) {
+                    if(profile) {
+                        setAvatarUrl(profile, () => addProfileCard(profile));
+                    }
+                }
+            }
+            else {
+                
+                $('.profiles-deck').append('<div class="no-profile">No profiles have been created yet</div>');
+            }
+        });
+    }
+
+    $
+}

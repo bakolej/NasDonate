@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Donations";
+}
+
+
+<div class="page-header">
+    <h1>Donations</h1>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <button class="nav-link donate-tab to-me">To me</button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link donate-tab from-me">From me</button>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="donations-deck">
+    @*<div class="donate-card">
+            <div class="donate-header d-flex justify-content-between">
+                <span class="donate-date">22.04.2018 at 13:45</span>
+                <div class="donate-author">
+                    <span class="nickname">
+                        Sarah Lynn
+                        <span class="wallet">(n1sdfan43sdn1nsdfsfa1323)</span>
+                    </span>
+                </div>
+            </div>
+            <div class="donate-body d-flex items-align-center">
+                <div class="donate-amount">+0.5 NAS</div>
+                <div class="donate-message">You are the best!</div>
+            </div>
+        </div>*@
+</div>
+
+@section Scripts {
+    loadToMeDonations();
+    $(".donate-tab.to-me").click(loadToMeDonations);
+    $(".donate-tab.from-me").click(loadFromMeDonations);
+}

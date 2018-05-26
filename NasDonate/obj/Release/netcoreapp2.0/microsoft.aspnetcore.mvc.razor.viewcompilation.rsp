@@ -1,0 +1,11 @@
+F:\Projects\NasDonate\NasDonate
+--output-path=obj\Release\netcoreapp2.0\
+--application-name=NasDonate
+--content-root=F:\Projects\NasDonate\NasDonate
+--file=F:\Projects\NasDonate\NasDonate\Views\Donations\Index.cshtml
+--file=F:\Projects\NasDonate\NasDonate\Views\Home\Faq.cshtml
+--file=F:\Projects\NasDonate\NasDonate\Views\Home\Index.cshtml
+--file=F:\Projects\NasDonate\NasDonate\Views\Profile\Index.cshtml
+--file=F:\Projects\NasDonate\NasDonate\Views\Shared\_Layout.cshtml
+--file=F:\Projects\NasDonate\NasDonate\Views\_ViewImports.cshtml
+--file=F:\Projects\NasDonate\NasDonate\Views\_ViewStart.cshtml

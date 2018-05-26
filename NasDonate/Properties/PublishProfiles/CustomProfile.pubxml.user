@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAGIHBdXTZe0CsYIKW3O9lBwAAAAACAAAAAAAQZgAAAAEAACAAAAA1NlXZFYEjal/ZBqH4AE7cCZykHH82h+uKQT3wX3/AnAAAAAAOgAAAAAIAACAAAABphm9CrFOh+a7Lo6244GaamhxAy0YK0Z/jyH3zXaLMHCAAAAB5XHkPzrW6UDRvIwkTbfPjHhQStNB0wIMEuvROUSLdD0AAAACKE4oxxRiaFSZvSdBMfU9w0BaNiBXydXLwa+DF/GwHbX02CAYGu5oQVV+35STs17pORuXbi0rBMdy81syyxUq5</EncryptedPassword>
+    <_PublishTargetUrl>ftp://FTP-EU.SITE4NOW.NET/nasdonate</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="appsettings.Development.json">
+      <publishTime>05/14/2018 23:07:47</publishTime>
+    </File>
+    <File Include="appsettings.json">
+      <publishTime>05/14/2018 23:07:31</publishTime>
+    </File>
+    <File Include="Microsoft.EntityFrameworkCore.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Microsoft.EntityFrameworkCore.Relational.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.Caching.Abstractions.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.Caching.Memory.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.Configuration.Abstractions.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.Logging.Abstractions.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.Logging.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.Options.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="NasDonate.deps.json">
+      <publishTime>05/16/2018 00:57:03</publishTime>
+    </File>
+    <File Include="NasDonate.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="NasDonate.pdb">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="NasDonate.PrecompiledViews.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="NasDonate.PrecompiledViews.pdb">
+      <publishTime>05/16/2018 00:57:03</publishTime>
+    </File>
+    <File Include="NasDonate.runtimeconfig.json">
+      <publishTime>05/16/2018 00:57:03</publishTime>
+    </File>
+    <File Include="web.config">
+      <publishTime>05/16/2018 00:57:03</publishTime>
+    </File>
+    <File Include="wwwroot/avatars/n1dsfdsffd.png">
+      <publishTime>05/15/2018 22:53:40</publishTime>
+    </File>
+    <File Include="wwwroot/avatars/n1Gz69PMFuVxczhdX6PRK8M5iMBuU4yyhaj.png">
+      <publishTime>05/15/2018 23:25:03</publishTime>
+    </File>
+    <File Include="wwwroot/avatars/no-avatar.png">
+      <publishTime>05/16/2018 00:11:32</publishTime>
+    </File>
+    <File Include="wwwroot/css/style.css">
+      <publishTime>05/15/2018 22:45:57</publishTime>
+    </File>
+    <File Include="wwwroot/img/bojack.jpg">
+      <publishTime>05/14/2018 03:01:03</publishTime>
+    </File>
+    <File Include="wwwroot/img/bojack1.jpg">
+      <publishTime>05/14/2018 03:07:18</publishTime>
+    </File>
+    <File Include="wwwroot/img/contacts/facebook.svg">
+      <publishTime>05/14/2018 03:18:39</publishTime>
+    </File>
+    <File Include="wwwroot/img/contacts/instagram.svg">
+      <publishTime>05/14/2018 03:18:29</publishTime>
+    </File>
+    <File Include="wwwroot/img/contacts/twitch.svg">
+      <publishTime>05/14/2018 03:18:36</publishTime>
+    </File>
+    <File Include="wwwroot/img/contacts/twitter.svg">
+      <publishTime>05/14/2018 03:18:41</publishTime>
+    </File>
+    <File Include="wwwroot/img/contacts/youtube.svg">
+      <publishTime>05/14/2018 03:18:33</publishTime>
+    </File>
+    <File Include="wwwroot/img/favicon.png">
+      <publishTime>05/14/2018 10:54:39</publishTime>
+    </File>
+    <File Include="wwwroot/img/logo.png">
+      <publishTime>05/14/2018 01:56:55</publishTime>
+    </File>
+    <File Include="wwwroot/js/app.js">
+      <publishTime>05/16/2018 00:44:04</publishTime>
+    </File>
+    <File Include="wwwroot/js/contractApi.js">
+      <publishTime>05/16/2018 00:30:42</publishTime>
+    </File>
+    <File Include="wwwroot/js/nebPay.js">
+      <publishTime>05/08/2018 08:08:16</publishTime>
+    </File>
+    <File Include="wwwroot/js/utils.js">
+      <publishTime>05/15/2018 07:59:40</publishTime>
+    </File>
+    <File Include="wwwroot/smartContract/donateContract.js">
+      <publishTime>05/15/2018 06:34:01</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
