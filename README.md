@@ -1,4 +1,4 @@
-#Nebulas Donate
+# Nebulas Donate
 
 The dapp allows you to accept or make donations with a message to the recipient. You can see the list of your donations in your personal account. All donations are immediately transferred to the wallet of the profile owner.
 
